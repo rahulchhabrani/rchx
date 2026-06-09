@@ -27,6 +27,7 @@ body {
   min-height: 100vh;
 }
 
+/* Background glow */
 body::before {
   content: '';
   position: fixed;
@@ -46,6 +47,7 @@ body::before {
   padding: 60px 24px 80px;
 }
 
+/* ── Hero ── */
 .hero { text-align: center; margin-bottom: 64px; }
 
 .hero .tag {
@@ -106,6 +108,7 @@ body::before {
   50%      { opacity: 0.5; transform: scale(1.3); }
 }
 
+/* ── Grid ── */
 .section-label {
   font-size: 11px;
   font-weight: 700;
@@ -175,6 +178,7 @@ body::before {
   letter-spacing: 0.5px;
 }
 
+/* Live badge */
 .app-card.live::after {
   content: '● LIVE';
   position: absolute;
@@ -186,6 +190,7 @@ body::before {
   color: var(--green);
 }
 
+/* Coming soon card */
 .app-card.coming {
   opacity: 0.35;
   cursor: default;
@@ -194,6 +199,7 @@ body::before {
 .app-card.coming:hover { transform: none; }
 .app-card.coming .card-name { color: var(--muted); }
 
+/* ── Footer ── */
 footer {
   text-align: center;
   margin-top: 60px;
@@ -203,6 +209,7 @@ footer {
 footer a { color: var(--accent2); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
+/* ── Shimmer on live cards ── */
 .app-card.live::before {
   content: '';
   position: absolute;
@@ -216,16 +223,18 @@ footer a:hover { text-decoration: underline; }
 <body>
 <div class="wrap">
 
+  <!-- Hero -->
   <div class="hero">
     <div class="tag">Daily Build Challenge</div>
     <h1>One app,<br>every day.</h1>
     <p>Useful tools built in a day, hosted here. All free, no sign-up.</p>
     <div class="streak">
       <span class="streak-dot"></span>
-      Day 1 streak — started June 2026
+      Day 2 streak — started June 2026
     </div>
   </div>
 
+  <!-- Live apps -->
   <div class="section-label">Live apps</div>
   <div class="grid" id="apps-grid">
 
@@ -237,8 +246,17 @@ footer a:hover { text-decoration: underline; }
       <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto-resets each month.</div>
     </a>
 
+    <a class="app-card live" href="https://chess.rchx.com" target="_blank">
+      <span class="card-day">Day 2</span>
+      <span class="card-icon">♟️</span>
+      <div class="card-name">Chess</div>
+      <div class="card-url">chess.rchx.com</div>
+      <div class="card-desc">Play chess in the browser. Clean minimal interface, no sign-up needed.</div>
+    </a>
+
   </div>
 
+  <!-- Coming soon -->
   <div class="section-label" style="margin-top:8px;">Coming soon</div>
   <div class="grid">
     <div class="app-card coming">
