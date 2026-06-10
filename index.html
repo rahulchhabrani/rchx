@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rchx.com — Apps by Rahul</title>
+<title>rchx.com - Apps by Rahul</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -47,7 +47,7 @@ body::before {
   padding: 60px 24px 80px;
 }
 
-/* ── Hero ── */
+/* -- Hero -- */
 .hero { text-align: center; margin-bottom: 64px; }
 
 .hero .tag {
@@ -108,7 +108,7 @@ body::before {
   50%      { opacity: 0.5; transform: scale(1.3); }
 }
 
-/* ── Grid ── */
+/* -- Grid -- */
 .section-label {
   font-size: 11px;
   font-weight: 700;
@@ -180,7 +180,7 @@ body::before {
 
 /* Live badge */
 .app-card.live::after {
-  content: '● LIVE';
+  content: '\25CF  LIVE';
   position: absolute;
   bottom: 14px;
   right: 14px;
@@ -199,7 +199,7 @@ body::before {
 .app-card.coming:hover { transform: none; }
 .app-card.coming .card-name { color: var(--muted); }
 
-/* ── Footer ── */
+/* -- Footer -- */
 footer {
   text-align: center;
   margin-top: 60px;
@@ -209,7 +209,7 @@ footer {
 footer a { color: var(--accent2); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-/* ── Shimmer on live cards ── */
+/* -- Shimmer on live cards -- */
 .app-card.live::before {
   content: '';
   position: absolute;
@@ -230,7 +230,7 @@ footer a:hover { text-decoration: underline; }
     <p>Useful tools built in a day, hosted here. All free, no sign-up.</p>
     <div class="streak">
       <span class="streak-dot"></span>
-      Day 2 streak — started June 2026
+      Day 3 streak &mdash; started June 2026
     </div>
   </div>
 
@@ -238,9 +238,9 @@ footer a:hover { text-decoration: underline; }
   <div class="section-label">Live apps</div>
   <div class="grid" id="apps-grid">
 
-      <a class="app-card live" href="https://chess.rchx.com" target="_blank">
+    <a class="app-card live" href="https://chess.rchx.com" target="_blank">
       <span class="card-day">Day 1</span>
-      <span class="card-icon">♟️</span>
+      <span class="card-icon">&#9823;</span>
       <div class="card-name">Chess Rundown Widget</div>
       <div class="card-url">chess.rchx.com</div>
       <div class="card-desc">Chess.com rundown widget for my stream</div>
@@ -248,12 +248,19 @@ footer a:hover { text-decoration: underline; }
 
     <a class="app-card live" href="https://bills.rchx.com" target="_blank">
       <span class="card-day">Day 2</span>
-      <span class="card-icon">💳</span>
+      <span class="card-icon">&#128179;</span>
       <div class="card-name">Bill Tracker</div>
       <div class="card-url">bills.rchx.com</div>
       <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto-resets each month.</div>
     </a>
-  
+
+    <a class="app-card live" href="https://chat.rchx.com" target="_blank">
+      <span class="card-day">Day 3</span>
+      <span class="card-icon">&#128172;</span>
+      <div class="card-name">Chat Overlay</div>
+      <div class="card-url">chat.rchx.com</div>
+      <div class="card-desc">Chrome extension that overlays Twitch, Kick &amp; YouTube chat on any website.</div>
+    </a>
 
   </div>
 
@@ -261,33 +268,33 @@ footer a:hover { text-decoration: underline; }
   <div class="section-label" style="margin-top:8px;">Coming soon</div>
   <div class="grid">
     <div class="app-card coming">
-      <span class="card-icon">📊</span>
+      <span class="card-icon">&#128202;</span>
       <div class="card-name">Budget</div>
       <div class="card-url">budget.rchx.com</div>
       <div class="card-desc">Monthly budget planner</div>
     </div>
     <div class="app-card coming">
-      <span class="card-icon">✅</span>
+      <span class="card-icon">&#9989;</span>
       <div class="card-name">Habit</div>
       <div class="card-url">habit.rchx.com</div>
       <div class="card-desc">Daily habit tracker</div>
     </div>
     <div class="app-card coming">
-      <span class="card-icon">⏱️</span>
+      <span class="card-icon">&#9201;</span>
       <div class="card-name">Focus</div>
       <div class="card-url">focus.rchx.com</div>
       <div class="card-desc">Pomodoro focus timer</div>
     </div>
     <div class="app-card coming">
-      <span class="card-icon">🔀</span>
+      <span class="card-icon">&#128257;</span>
       <div class="card-name">Split</div>
       <div class="card-url">split.rchx.com</div>
-      <div class="card-desc">Bill & expense splitter</div>
+      <div class="card-desc">Bill &amp; expense splitter</div>
     </div>
   </div>
 
   <footer>
-    Built by <a href="https://github.com/rahulchhabrani" target="_blank">Rahul Chhabrani</a> &nbsp;·&nbsp;
+    Built by <a href="https://github.com/rahulchhabrani" target="_blank">Rahul Chhabrani</a> &nbsp;&middot;&nbsp;
     <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
   </footer>
 
