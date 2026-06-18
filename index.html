@@ -240,11 +240,11 @@ footer a:hover { text-decoration: underline; }
   </footer>
 </div>
 
-<!-- Oneko cat — follows your cursor -->
+<!-- Oneko cat — follows your cursor (github.com/adryd325/oneko.js) -->
 <script>
 (function oneko() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const CAT_GIF = 'https://cdn.jsdelivr.net/gh/adryd325/oneko.js@2.2/oneko.gif';
+  const CAT_GIF = 'https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif';
   const nekoEl = document.createElement('div');
   nekoEl.id = 'oneko';
   nekoEl.setAttribute('aria-hidden', 'true');
@@ -268,12 +268,12 @@ footer a:hover { text-decoration: underline; }
     W:[[-4,-2],[-4,-3]],NW:[[-1,0],[-1,-1]],
   };
   let nx=32,ny=32,mx=0,my=0,fc=0,it=0,ia=null,iaf=0,lft;
-  function ss(n,f){const s=SPRITES[n][f%SPRITES[n].length];nekoEl.style.backgroundPosition=s[0]*32+'px '+s[1]*32+'px';}
+  function ss(n,f){var s=SPRITES[n][f%SPRITES[n].length];nekoEl.style.backgroundPosition=s[0]*32+'px '+s[1]*32+'px';}
   function ri(){ia=null;iaf=0;}
   function idle(){
     it++;
     if(it>10&&Math.floor(Math.random()*200)===0&&!ia){
-      const o=['sleeping','scratchSelf'];
+      var o=['sleeping','scratchSelf'];
       if(nx<32)o.push('scratchWallW');if(ny<32)o.push('scratchWallN');
       if(nx>window.innerWidth-32)o.push('scratchWallE');if(ny>window.innerHeight-32)o.push('scratchWallS');
       ia=o[Math.floor(Math.random()*o.length)];
@@ -288,11 +288,11 @@ footer a:hover { text-decoration: underline; }
   }
   function frame(){
     fc++;
-    const dx=nx-mx,dy=ny-my,d=Math.sqrt(dx*dx+dy*dy);
+    var dx=nx-mx,dy=ny-my,d=Math.sqrt(dx*dx+dy*dy);
     if(d<SPEED||d<48){idle();return;}
     ia=null;iaf=0;
     if(it>1){ss('alert',0);it=Math.min(it,7)-1;return;}
-    let dir='';
+    var dir='';
     if(dy/d>0.5)dir+='N';if(dy/d<-0.5)dir+='S';
     if(dx/d>0.5)dir+='W';if(dx/d<-0.5)dir+='E';
     ss(dir,fc);
