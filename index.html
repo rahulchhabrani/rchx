@@ -3,260 +3,409 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rchx.com - Apps by Rahul</title>
+<title>rchx.com — Apps by Rahul</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #080812;
-  --surface: rgba(255,255,255,0.04);
-  --surface-hover: rgba(255,255,255,0.07);
-  --border: rgba(255,255,255,0.08);
-  --accent: #6c63ff;
-  --accent2: #a78bfa;
-  --text: #e8e8f0;
-  --muted: #6b6b80;
-  --green: #22c55e;
-  --radius: 16px;
+  --bg: #000;
+  --card: rgba(28,28,30,0.72);
+  --card-hover: rgba(44,44,46,0.9);
+  --border: rgba(255,255,255,0.1);
+  --border-hover: rgba(255,255,255,0.2);
+  --text: #f5f5f7;
+  --muted: #86868b;
+  --accent: #2997ff;
+  --green: #30d158;
+  --nav-h: 52px;
+  --radius: 18px;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
-body::before {
-  content: '';
+/* ---- NAV ---- */
+nav {
   position: fixed;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(108,99,255,0.12), transparent 70%);
-  top: -200px; left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 0;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 1000;
 }
+.nav-logo {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-right a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-right a:hover { color: var(--text); }
 
-.wrap {
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--nav-h) + 60px) 24px 100px;
   position: relative;
-  z-index: 1;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 60px 24px 80px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(41,151,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.hero { text-align: center; margin-bottom: 64px; }
-
-.hero .tag {
-  display: inline-block;
-  background: rgba(108,99,255,0.15);
-  border: 1px solid rgba(108,99,255,0.3);
-  color: var(--accent2);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 20px;
-  margin-bottom: 20px;
+  color: var(--accent);
+  margin-bottom: 22px;
 }
 
 .hero h1 {
-  font-size: clamp(36px, 6vw, 56px);
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 16px;
-}
-
-.hero p {
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 420px;
-  margin: 0 auto;
-}
-
-.hero .streak {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  background: rgba(34,197,94,0.1);
-  border: 1px solid rgba(34,197,94,0.2);
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 13px;
-  color: #4ade80;
-  font-weight: 600;
-}
-.streak-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #22c55e;
-  animation: pulse 2s ease infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.5; transform: scale(1.3); }
-}
-
-.section-label {
-  font-size: 11px;
+  font-size: clamp(60px, 9vw, 96px);
   font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
+  letter-spacing: -3px;
+  line-height: 1.03;
+  color: var(--text);
+  max-width: 760px;
+  margin-bottom: 28px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 14px;
+.hero-sub {
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: -0.3px;
+  line-height: 1.48;
+  max-width: 440px;
   margin-bottom: 40px;
 }
 
-.app-card {
-  background: var(--surface);
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(48,209,88,0.08);
+  border: 1px solid rgba(48,209,88,0.22);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: -0.1px;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.35; transform:scale(1.5); }
+}
+
+/* ---- SECTIONS ---- */
+.section {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.section-header { margin-bottom: 44px; }
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: 1.08;
+  color: var(--text);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin: 0 auto 100px;
+  max-width: 1020px;
+  padding: 0 24px;
+}
+
+/* ---- GRIDS ---- */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+@media(max-width:760px){
+  .grid-3,.grid-4 { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px){
+  .grid-3,.grid-4 { grid-template-columns:1fr; }
+  .hero h1 { letter-spacing:-2px; }
+}
+
+/* ---- CARD ---- */
+.card {
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 28px 24px 24px;
   text-decoration: none;
   color: inherit;
-  display: block;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
+  transition: background 0.22s, border-color 0.22s, transform 0.18s;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
-.app-card:hover {
-  background: var(--surface-hover);
-  border-color: rgba(108,99,255,0.3);
-  transform: translateY(-2px);
-}
-
-.app-card .card-icon { font-size: 28px; margin-bottom: 12px; display: block; }
-.app-card .card-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-.app-card .card-url { font-size: 11px; color: var(--accent2); margin-bottom: 10px; font-weight: 500; }
-.app-card .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.app-card .card-day { position: absolute; top: 14px; right: 14px; font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; }
-
-.app-card.live::after {
-  content: '\25CF  LIVE';
-  position: absolute; bottom: 14px; right: 14px;
-  font-size: 9px; font-weight: 700; letter-spacing: 1px; color: var(--green);
+a.card:hover {
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
 }
 
-.app-card.coming { opacity: 0.35; cursor: default; pointer-events: none; }
-.app-card.coming:hover { transform: none; }
-.app-card.coming .card-name { color: var(--muted); }
-
-footer { text-align: center; margin-top: 60px; color: var(--muted); font-size: 13px; }
-footer a { color: var(--accent2); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-
-.app-card.live::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.025) 50%, transparent 60%);
-  animation: shimmer 3s ease infinite;
+.card-num {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
 }
-@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+
+.card-icon {
+  font-size: 34px;
+  margin-bottom: 20px;
+  display: block;
+  line-height: 1;
+}
+
+.card-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.card-domain {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.52;
+  flex: 1;
+}
+
+.card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--green);
+}
+.card-status-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.card.dim {
+  opacity: 0.36;
+  pointer-events: none;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: -0.1px;
+}
+footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--text); }
+.footer-divider { margin: 0 8px; opacity: 0.4; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="hero">
-    <div class="tag">Daily Build Challenge</div>
-    <h1>One app,<br>every day.</h1>
-    <p>Useful tools built in a day, hosted here. All free, no sign-up.</p>
-    <div class="streak">
-      <span class="streak-dot"></span>
-      Day 3 streak &mdash; started June 2026
-    </div>
-  </div>
 
-  <div class="section-label">Live apps</div>
-  <div class="grid" id="apps-grid">
-    <a class="app-card live" href="https://chess.rchx.com" target="_blank">
-      <span class="card-day">Day 1</span>
+<nav>
+  <a href="/" class="nav-logo">rchx</a>
+  <div class="nav-right">
+    <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="eyebrow">Daily Build Challenge</p>
+  <h1>One app.<br>Every day.</h1>
+  <p class="hero-sub">Useful tools built in a day, hosted here. All free, no sign&#8209;up.</p>
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Day 3 streak &mdash; started June 2026
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-eyebrow">Live apps</p>
+    <h2 class="section-title">Ready to use.</h2>
+  </div>
+  <div class="grid-3">
+
+    <a class="card" href="https://chess.rchx.com" target="_blank">
+      <span class="card-num">Day 1</span>
       <span class="card-icon">&#9823;</span>
-      <div class="card-name">Chess Rundown Widget</div>
-      <div class="card-url">chess.rchx.com</div>
-      <div class="card-desc">Chess.com rundown widget for my stream</div>
+      <div class="card-name">Chess Rundown</div>
+      <div class="card-domain">chess.rchx.com</div>
+      <div class="card-desc">Chess.com stats widget for my stream</div>
+      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
     </a>
-    <a class="app-card live" href="https://bills.rchx.com" target="_blank">
-      <span class="card-day">Day 2</span>
+
+    <a class="card" href="https://bills.rchx.com" target="_blank">
+      <span class="card-num">Day 2</span>
       <span class="card-icon">&#128179;</span>
       <div class="card-name">Bill Tracker</div>
-      <div class="card-url">bills.rchx.com</div>
-      <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto-resets each month.</div>
+      <div class="card-domain">bills.rchx.com</div>
+      <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto&#8209;resets each month.</div>
+      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
     </a>
-    <a class="app-card live" href="https://chat.rchx.com" target="_blank">
-      <span class="card-day">Day 3</span>
+
+    <a class="card" href="https://chat.rchx.com" target="_blank">
+      <span class="card-num">Day 3</span>
       <span class="card-icon">&#128172;</span>
       <div class="card-name">Chat Overlay</div>
-      <div class="card-url">chat.rchx.com</div>
-      <div class="card-desc">Chrome extension that overlays Twitch, Kick &amp; YouTube chat on any website.</div>
+      <div class="card-domain">chat.rchx.com</div>
+      <div class="card-desc">Chrome extension overlaying Twitch, Kick &amp; YouTube chat on any website.</div>
+      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
     </a>
-  </div>
 
-  <div class="section-label" style="margin-top:8px;">Coming soon</div>
-  <div class="grid">
-    <div class="app-card coming">
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-eyebrow">Coming soon</p>
+    <h2 class="section-title">What&rsquo;s next.</h2>
+  </div>
+  <div class="grid-4">
+
+    <div class="card dim">
       <span class="card-icon">&#128202;</span>
       <div class="card-name">Budget</div>
-      <div class="card-url">budget.rchx.com</div>
+      <div class="card-domain">budget.rchx.com</div>
       <div class="card-desc">Monthly budget planner</div>
     </div>
-    <div class="app-card coming">
+
+    <div class="card dim">
       <span class="card-icon">&#9989;</span>
       <div class="card-name">Habit</div>
-      <div class="card-url">habit.rchx.com</div>
+      <div class="card-domain">habit.rchx.com</div>
       <div class="card-desc">Daily habit tracker</div>
     </div>
-    <div class="app-card coming">
+
+    <div class="card dim">
       <span class="card-icon">&#9201;</span>
       <div class="card-name">Focus</div>
-      <div class="card-url">focus.rchx.com</div>
+      <div class="card-domain">focus.rchx.com</div>
       <div class="card-desc">Pomodoro focus timer</div>
     </div>
-    <div class="app-card coming">
+
+    <div class="card dim">
       <span class="card-icon">&#128257;</span>
       <div class="card-name">Split</div>
-      <div class="card-url">split.rchx.com</div>
+      <div class="card-domain">split.rchx.com</div>
       <div class="card-desc">Bill &amp; expense splitter</div>
     </div>
+
   </div>
+</section>
 
-  <footer>
-    Built by <a href="https://github.com/rahulchhabrani" target="_blank">Rahul Chhabrani</a> &nbsp;&middot;&nbsp;
-    <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
-  </footer>
-</div>
+<footer>
+  Copyright &copy; 2026
+  <a href="https://github.com/rahulchhabrani" target="_blank">Rahul Chhabrani</a>
+  <span class="footer-divider">&middot;</span>
+  <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
+</footer>
 
-<!-- Oneko cat — follows your cursor (github.com/adryd325/oneko.js) -->
+<!-- Oneko cat — follows your cursor -->
 <script>
 (function oneko() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const CAT_GIF = 'https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif';
-  const nekoEl = document.createElement('div');
-  nekoEl.id = 'oneko';
-  nekoEl.setAttribute('aria-hidden', 'true');
-  Object.assign(nekoEl.style, {
-    width: '32px', height: '32px', position: 'fixed',
-    pointerEvents: 'none', imageRendering: 'pixelated',
-    left: '16px', top: '16px', zIndex: '2147483647',
-    backgroundImage: 'url(' + CAT_GIF + ')',
+  var CAT_GIF = 'https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif';
+  var el = document.createElement('div');
+  el.id = 'oneko';
+  el.setAttribute('aria-hidden', 'true');
+  Object.assign(el.style, {
+    width:'32px',height:'32px',position:'fixed',
+    pointerEvents:'none',imageRendering:'pixelated',
+    left:'16px',top:'16px',zIndex:'2147483647',
+    backgroundImage:'url('+CAT_GIF+')',
   });
-  document.body.appendChild(nekoEl);
-  const SPEED = 10;
-  const SPRITES = {
+  document.body.appendChild(el);
+  var SP={
     idle:[[-3,-3]],alert:[[-7,-3]],
     scratchSelf:[[-5,0],[-6,0],[-7,0]],
     scratchWallN:[[0,0],[0,-1]],scratchWallS:[[-7,-1],[-6,-2]],
@@ -267,8 +416,8 @@ footer a:hover { text-decoration: underline; }
     S:[[-6,-3],[-7,-2]],SW:[[-5,-3],[-6,-1]],
     W:[[-4,-2],[-4,-3]],NW:[[-1,0],[-1,-1]],
   };
-  let nx=32,ny=32,mx=0,my=0,fc=0,it=0,ia=null,iaf=0,lft;
-  function ss(n,f){var s=SPRITES[n][f%SPRITES[n].length];nekoEl.style.backgroundPosition=s[0]*32+'px '+s[1]*32+'px';}
+  var nx=32,ny=32,mx=0,my=0,fc=0,it=0,ia=null,iaf=0,lft,SPD=10;
+  function ss(n,f){var s=SP[n][f%SP[n].length];el.style.backgroundPosition=s[0]*32+'px '+s[1]*32+'px';}
   function ri(){ia=null;iaf=0;}
   function idle(){
     it++;
@@ -280,8 +429,7 @@ footer a:hover { text-decoration: underline; }
     }
     switch(ia){
       case'sleeping':if(iaf<8){ss('tired',0);break;}ss('sleeping',Math.floor(iaf/4));if(iaf>192)ri();break;
-      case'scratchWallN':case'scratchWallS':case'scratchWallE':case'scratchWallW':case'scratchSelf':
-        ss(ia,iaf);if(iaf>9)ri();break;
+      case'scratchWallN':case'scratchWallS':case'scratchWallE':case'scratchWallW':case'scratchSelf':ss(ia,iaf);if(iaf>9)ri();break;
       default:ss('idle',0);return;
     }
     iaf++;
@@ -289,20 +437,20 @@ footer a:hover { text-decoration: underline; }
   function frame(){
     fc++;
     var dx=nx-mx,dy=ny-my,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<SPEED||d<48){idle();return;}
+    if(d<SPD||d<48){idle();return;}
     ia=null;iaf=0;
     if(it>1){ss('alert',0);it=Math.min(it,7)-1;return;}
     var dir='';
-    if(dy/d>0.5)dir+='N';if(dy/d<-0.5)dir+='S';
-    if(dx/d>0.5)dir+='W';if(dx/d<-0.5)dir+='E';
+    if(dy/d>.5)dir+='N';if(dy/d<-.5)dir+='S';
+    if(dx/d>.5)dir+='W';if(dx/d<-.5)dir+='E';
     ss(dir,fc);
-    nx-=(dx/d)*SPEED;ny-=(dy/d)*SPEED;
+    nx-=(dx/d)*SPD;ny-=(dy/d)*SPD;
     nx=Math.min(Math.max(16,nx),window.innerWidth-16);
     ny=Math.min(Math.max(16,ny),window.innerHeight-16);
-    nekoEl.style.left=(nx-16)+'px';nekoEl.style.top=(ny-16)+'px';
+    el.style.left=(nx-16)+'px';el.style.top=(ny-16)+'px';
   }
   function tick(ts){
-    if(!nekoEl.isConnected)return;
+    if(!el.isConnected)return;
     if(!lft)lft=ts;
     if(ts-lft>100){lft=ts;frame();}
     requestAnimationFrame(tick);
