@@ -411,7 +411,7 @@ footer a:hover { color: var(--text); }
   Object.assign(el.style, {
     width:'32px',height:'32px',position:'fixed',
     pointerEvents:'none',imageRendering:'pixelated',
-    left:'16px',top:'16px',2Index:'2147483647',
+    left:'16px',top:'16px',zIndex:'2147483647',
     backgroundImage:'url('+CAT_GIF+')',
   });
   document.body.appendChild(el);
@@ -434,7 +434,7 @@ footer a:hover { color: var(--text); }
     if(it>10&&Math.floor(Math.random()*200)===0&&!ia){
       var o=['sleeping','scratchSelf'];
       if(nx<32)o.push('scratchWallW');if(ny<32)o.push('scratchWallN');
-      if(nx<window.innerWidth-32)o.push('scratchWallE');if(ny>window.innerHeight-32)o.push('scratchWallS');
+      if(nx>window.innerWidth-32)o.push('scratchWallE');if(ny>window.innerHeight-32)o.push('scratchWallS');
       ia=o[Math.floor(Math.random()*o.length)];
     }
     switch(ia){
