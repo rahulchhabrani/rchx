@@ -27,7 +27,6 @@ body {
   min-height: 100vh;
 }
 
-/* Background glow */
 body::before {
   content: '';
   position: fixed;
@@ -47,7 +46,6 @@ body::before {
   padding: 60px 24px 80px;
 }
 
-/* -- Hero -- */
 .hero { text-align: center; margin-bottom: 64px; }
 
 .hero .tag {
@@ -108,7 +106,6 @@ body::before {
   50%      { opacity: 0.5; transform: scale(1.3); }
 }
 
-/* -- Grid -- */
 .section-label {
   font-size: 11px;
   font-weight: 700;
@@ -143,77 +140,29 @@ body::before {
   transform: translateY(-2px);
 }
 
-.app-card .card-icon {
-  font-size: 28px;
-  margin-bottom: 12px;
-  display: block;
-}
+.app-card .card-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.app-card .card-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.app-card .card-url { font-size: 11px; color: var(--accent2); margin-bottom: 10px; font-weight: 500; }
+.app-card .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.app-card .card-day { position: absolute; top: 14px; right: 14px; font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; }
 
-.app-card .card-name {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.app-card .card-url {
-  font-size: 11px;
-  color: var(--accent2);
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.app-card .card-desc {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.app-card .card-day {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 0.5px;
-}
-
-/* Live badge */
 .app-card.live::after {
   content: '\25CF  LIVE';
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--green);
+  position: absolute; bottom: 14px; right: 14px;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px; color: var(--green);
 }
 
-/* Coming soon card */
-.app-card.coming {
-  opacity: 0.35;
-  cursor: default;
-  pointer-events: none;
-}
+.app-card.coming { opacity: 0.35; cursor: default; pointer-events: none; }
 .app-card.coming:hover { transform: none; }
 .app-card.coming .card-name { color: var(--muted); }
 
-/* -- Footer -- */
-footer {
-  text-align: center;
-  margin-top: 60px;
-  color: var(--muted);
-  font-size: 13px;
-}
+footer { text-align: center; margin-top: 60px; color: var(--muted); font-size: 13px; }
 footer a { color: var(--accent2); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
-/* -- Shimmer on live cards -- */
 .app-card.live::before {
   content: '';
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.025) 50%, transparent 60%);
   animation: shimmer 3s ease infinite;
 }
@@ -222,8 +171,6 @@ footer a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="wrap">
-
-  <!-- Hero -->
   <div class="hero">
     <div class="tag">Daily Build Challenge</div>
     <h1>One app,<br>every day.</h1>
@@ -234,10 +181,8 @@ footer a:hover { text-decoration: underline; }
     </div>
   </div>
 
-  <!-- Live apps -->
   <div class="section-label">Live apps</div>
   <div class="grid" id="apps-grid">
-
     <a class="app-card live" href="https://chess.rchx.com" target="_blank">
       <span class="card-day">Day 1</span>
       <span class="card-icon">&#9823;</span>
@@ -245,7 +190,6 @@ footer a:hover { text-decoration: underline; }
       <div class="card-url">chess.rchx.com</div>
       <div class="card-desc">Chess.com rundown widget for my stream</div>
     </a>
-
     <a class="app-card live" href="https://bills.rchx.com" target="_blank">
       <span class="card-day">Day 2</span>
       <span class="card-icon">&#128179;</span>
@@ -253,7 +197,6 @@ footer a:hover { text-decoration: underline; }
       <div class="card-url">bills.rchx.com</div>
       <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto-resets each month.</div>
     </a>
-
     <a class="app-card live" href="https://chat.rchx.com" target="_blank">
       <span class="card-day">Day 3</span>
       <span class="card-icon">&#128172;</span>
@@ -261,10 +204,8 @@ footer a:hover { text-decoration: underline; }
       <div class="card-url">chat.rchx.com</div>
       <div class="card-desc">Chrome extension that overlays Twitch, Kick &amp; YouTube chat on any website.</div>
     </a>
-
   </div>
 
-  <!-- Coming soon -->
   <div class="section-label" style="margin-top:8px;">Coming soon</div>
   <div class="grid">
     <div class="app-card coming">
@@ -297,7 +238,78 @@ footer a:hover { text-decoration: underline; }
     Built by <a href="https://github.com/rahulchhabrani" target="_blank">Rahul Chhabrani</a> &nbsp;&middot;&nbsp;
     <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
   </footer>
-
 </div>
+
+<!-- Oneko cat — follows your cursor -->
+<script>
+(function oneko() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const CAT_GIF = 'https://cdn.jsdelivr.net/gh/adryd325/oneko.js@2.2/oneko.gif';
+  const nekoEl = document.createElement('div');
+  nekoEl.id = 'oneko';
+  nekoEl.setAttribute('aria-hidden', 'true');
+  Object.assign(nekoEl.style, {
+    width: '32px', height: '32px', position: 'fixed',
+    pointerEvents: 'none', imageRendering: 'pixelated',
+    left: '16px', top: '16px', zIndex: '2147483647',
+    backgroundImage: 'url(' + CAT_GIF + ')',
+  });
+  document.body.appendChild(nekoEl);
+  const SPEED = 10;
+  const SPRITES = {
+    idle:[[-3,-3]],alert:[[-7,-3]],
+    scratchSelf:[[-5,0],[-6,0],[-7,0]],
+    scratchWallN:[[0,0],[0,-1]],scratchWallS:[[-7,-1],[-6,-2]],
+    scratchWallE:[[-2,-2],[-2,-3]],scratchWallW:[[-4,0],[-4,-1]],
+    tired:[[-3,-2]],sleeping:[[-2,0],[-2,-1]],
+    N:[[-1,-2],[-1,-3]],NE:[[0,-2],[0,-3]],
+    E:[[-3,0],[-3,-1]],SE:[[-5,-1],[-5,-2]],
+    S:[[-6,-3],[-7,-2]],SW:[[-5,-3],[-6,-1]],
+    W:[[-4,-2],[-4,-3]],NW:[[-1,0],[-1,-1]],
+  };
+  let nx=32,ny=32,mx=0,my=0,fc=0,it=0,ia=null,iaf=0,lft;
+  function ss(n,f){const s=SPRITES[n][f%SPRITES[n].length];nekoEl.style.backgroundPosition=s[0]*32+'px '+s[1]*32+'px';}
+  function ri(){ia=null;iaf=0;}
+  function idle(){
+    it++;
+    if(it>10&&Math.floor(Math.random()*200)===0&&!ia){
+      const o=['sleeping','scratchSelf'];
+      if(nx<32)o.push('scratchWallW');if(ny<32)o.push('scratchWallN');
+      if(nx>window.innerWidth-32)o.push('scratchWallE');if(ny>window.innerHeight-32)o.push('scratchWallS');
+      ia=o[Math.floor(Math.random()*o.length)];
+    }
+    switch(ia){
+      case'sleeping':if(iaf<8){ss('tired',0);break;}ss('sleeping',Math.floor(iaf/4));if(iaf>192)ri();break;
+      case'scratchWallN':case'scratchWallS':case'scratchWallE':case'scratchWallW':case'scratchSelf':
+        ss(ia,iaf);if(iaf>9)ri();break;
+      default:ss('idle',0);return;
+    }
+    iaf++;
+  }
+  function frame(){
+    fc++;
+    const dx=nx-mx,dy=ny-my,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<SPEED||d<48){idle();return;}
+    ia=null;iaf=0;
+    if(it>1){ss('alert',0);it=Math.min(it,7)-1;return;}
+    let dir='';
+    if(dy/d>0.5)dir+='N';if(dy/d<-0.5)dir+='S';
+    if(dx/d>0.5)dir+='W';if(dx/d<-0.5)dir+='E';
+    ss(dir,fc);
+    nx-=(dx/d)*SPEED;ny-=(dy/d)*SPEED;
+    nx=Math.min(Math.max(16,nx),window.innerWidth-16);
+    ny=Math.min(Math.max(16,ny),window.innerHeight-16);
+    nekoEl.style.left=(nx-16)+'px';nekoEl.style.top=(ny-16)+'px';
+  }
+  function tick(ts){
+    if(!nekoEl.isConnected)return;
+    if(!lft)lft=ts;
+    if(ts-lft>100){lft=ts;frame();}
+    requestAnimationFrame(tick);
+  }
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+  requestAnimationFrame(tick);
+})();
+</script>
 </body>
 </html>
