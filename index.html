@@ -2,402 +2,309 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 32'><rect width='44' height='32' rx='7' fill='%23000'/><text x='3' y='23' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='17' fill='%232997ff'>rchx</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rchx &mdash; Apps by Rahul</title>
+<title>rchx.com - Apps by Rahul</title>
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg: #000;
-  --card: rgba(28,28,30,0.72);
-  --card-hover: rgba(44,44,46,0.9);
-  --border: rgba(255,255,255,0.1);
-  --border-hover: rgba(255,255,255,0.2);
-  --text: #f5f5f7;
-  --muted: #86868b;
-  --accent: #2997ff;
-  --green: #30d158;
-  --nav-h: 52px;
-  --radius: 18px;
+  --bg: #080812;
+  --surface: rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.08);
+  --accent: #6c63ff;
+  --accent2: #a78bfa;
+  --text: #e8e8f0;
+  --muted: #6b6b80;
+  --green: #22c55e;
+  --radius: 16px;
 }
-
-html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
 }
 
-/* NAV */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--nav-h);
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  z-index: 1000;
-}
-.nav-logo {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.4px;
-  color: var(--text);
-  text-decoration: none;
-}
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.nav-right a {
-  font-size: 13px;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-right a:hover { color: var(--text); }
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: calc(var(--nav-h) + 60px) 24px 120px;
-  position: relative;
-}
-.hero::before {
+/* Background glow */
+body::before {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(41,151,255,0.07) 0%, transparent 70%);
+  position: fixed;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(108,99,255,0.12), transparent 70%);
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
   pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* -- Hero -- */
+.hero { text-align: center; margin-bottom: 64px; }
+
+.hero .tag {
+  display: inline-block;
+  background: rgba(108,99,255,0.15);
+  border: 1px solid rgba(108,99,255,0.3);
+  color: var(--accent2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-size: clamp(60px, 9vw, 96px);
-  font-weight: 700;
-  letter-spacing: -3px;
-  line-height: 1.03;
-  color: var(--text);
-  max-width: 720px;
-  margin-bottom: 24px;
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
 }
 
-.hero-sub {
-  font-size: 20px;
-  font-weight: 400;
+.hero p {
   color: var(--muted);
-  letter-spacing: -0.3px;
-  line-height: 1.5;
-  max-width: 360px;
-}
-
-/* SECTION */
-.section {
-  max-width: 960px;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 420px;
   margin: 0 auto;
-  padding: 0 24px 100px;
 }
 
-.section-label {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-@media(max-width: 720px) {
-  .grid { grid-template-columns: 1fr 1fr; }
-}
-@media(max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
-  .hero h1 { letter-spacing: -2px; }
-}
-
-/* CARD */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 24px 24px;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.22s, border-color 0.22s, transform 0.18s;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-a.card:hover {
-  background: var(--card-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-4px);
-}
-
-.card-icon {
-  font-size: 32px;
-  margin-bottom: 18px;
-  display: block;
-  line-height: 1;
-}
-
-.card-name {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  color: var(--text);
-  margin-bottom: 5px;
-}
-
-.card-domain {
-  font-size: 12px;
-  color: var(--accent);
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.card-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.52;
-  flex: 1;
-}
-
-.card-status {
+.hero .streak {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 24px;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: #4ade80;
+  font-weight: 600;
+}
+.streak-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* -- Grid -- */
+.section-label {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.app-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.app-card:hover {
+  background: var(--surface-hover);
+  border-color: rgba(108,99,255,0.3);
+  transform: translateY(-2px);
+}
+
+.app-card .card-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.app-card .card-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.app-card .card-url {
+  font-size: 11px;
+  color: var(--accent2);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.app-card .card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.app-card .card-day {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* Live badge */
+.app-card.live::after {
+  content: '\25CF  LIVE';
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
   color: var(--green);
 }
-.card-status-dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--green);
-}
 
-.card.dim {
-  opacity: 0.36;
+/* Coming soon card */
+.app-card.coming {
+  opacity: 0.35;
+  cursor: default;
   pointer-events: none;
 }
+.app-card.coming:hover { transform: none; }
+.app-card.coming .card-name { color: var(--muted); }
 
-/* DIVIDER */
-.divider {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  margin: 0 auto 80px;
-  max-width: 960px;
-}
-
-/* FOOTER */
+/* -- Footer -- */
 footer {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 40px 24px;
   text-align: center;
+  margin-top: 60px;
   color: var(--muted);
   font-size: 13px;
-  letter-spacing: -0.1px;
 }
-footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-footer a:hover { color: var(--text); }
-.footer-divider { margin: 0 8px; opacity: 0.4; }
+footer a { color: var(--accent2); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* -- Shimmer on live cards -- */
+.app-card.live::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.025) 50%, transparent 60%);
+  animation: shimmer 3s ease infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<nav>
-  <a href="/" class="nav-logo">rchx</a>
-  <div class="nav-right">
-    <a href="https://x.com/rahulchhabrani" target="_blank" aria-label="X" style="display:flex;align-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.213 5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="tag">Daily Build Challenge</div>
+    <h1>One app,<br>every day.</h1>
+    <p>Useful tools built in a day, hosted here. All free, no sign-up.</p>
+    <div class="streak">
+      <span class="streak-dot"></span>
+      Day 4 streak &mdash; started June 2026
+    </div>
   </div>
-</nav>
 
-<section class="hero">
-  <h1>Apps I ship.</h1>
-  <p class="hero-sub">Tools I build when ideas strike. All free, no sign&#8209;up.</p>
-</section>
+  <!-- Live apps -->
+  <div class="section-label">Live apps</div>
+  <div class="grid" id="apps-grid">
 
-<section class="section">
-  <p class="section-label">Live</p>
-  <div class="grid">
-
-    <a class="card" href="https://chess.rchx.com" target="_blank">
+    <a class="app-card live" href="https://chess.rchx.com" target="_blank">
+      <span class="card-day">Day 1</span>
       <span class="card-icon">&#9823;</span>
-      <div class="card-name">Chess Rundown</div>
-      <div class="card-domain">chess.rchx.com</div>
-      <div class="card-desc">Chess.com stats widget for my stream</div>
-      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
+      <div class="card-name">Chess Rundown Widget</div>
+      <div class="card-url">chess.rchx.com</div>
+      <div class="card-desc">Chess.com rundown widget for my stream</div>
     </a>
 
-    <a class="card" href="https://bills.rchx.com" target="_blank">
+    <a class="app-card live" href="https://bills.rchx.com" target="_blank">
+      <span class="card-day">Day 2</span>
       <span class="card-icon">&#128179;</span>
       <div class="card-name">Bill Tracker</div>
-      <div class="card-domain">bills.rchx.com</div>
-      <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto&#8209;resets each month.</div>
-      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
+      <div class="card-url">bills.rchx.com</div>
+      <div class="card-desc">Track monthly credit card bills. Tap to mark paid. Auto-resets each month.</div>
     </a>
 
-    <a class="card" href="https://chat.rchx.com" target="_blank">
-      <span class="card-icon"><img src="https://chat.rchx.com/icons/icon48.png" width="32" height="32" alt="Chat Overlay icon" style="border-radius:8px;vertical-align:middle;"></span>
+    <a class="app-card live" href="https://chat.rchx.com" target="_blank">
+      <span class="card-day">Day 3</span>
+      <span class="card-icon">&#128172;</span>
       <div class="card-name">Chat Overlay</div>
-      <div class="card-domain">chat.rchx.com</div>
-      <div class="card-desc">Chrome extension overlaying Twitch, Kick &amp; YouTube chat on any website.</div>
-      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
+      <div class="card-url">chat.rchx.com</div>
+      <div class="card-desc">Chrome extension that overlays Twitch, Kick &amp; YouTube chat on any website.</div>
     </a>
 
-    <a class="card" href="https://cat.rchx.com" target="_blank">
-      <span class="card-icon">&#128008;</span>
-      <div class="card-name">Oneko Cat Overlay</div>
-      <div class="card-domain">cat.rchx.com</div>
-      <div class="card-desc">Oneko cursor cat as an OBS browser source. Reacts to chess.com moves during stream.</div>
-      <div class="card-status"><span class="card-status-dot"></span>LIVE</div>
+    <a class="app-card live" href="https://ibkr-schedule-fa.rchx.com" target="_blank">
+      <span class="card-day">Day 4</span>
+      <span class="card-icon">&#128200;</span>
+      <div class="card-name">IBKR FA Scheduler</div>
+      <div class="card-url">ibkr-schedule-fa.rchx.com</div>
+      <div class="card-desc">Schedule and manage financial advisor appointments via Interactive Brokers.</div>
     </a>
 
   </div>
-</section>
 
-<hr class="divider">
-
-<section class="section" style="padding-bottom: 60px;">
-  <p class="section-label">In the works</p>
+  <!-- Coming soon -->
+  <div class="section-label" style="margin-top:8px;">Coming soon</div>
   <div class="grid">
-
-    <div class="card dim">
+    <div class="app-card coming">
       <span class="card-icon">&#128202;</span>
       <div class="card-name">Budget</div>
-      <div class="card-domain">budget.rchx.com</div>
+      <div class="card-url">budget.rchx.com</div>
       <div class="card-desc">Monthly budget planner</div>
     </div>
-
-    <div class="card dim">
+    <div class="app-card coming">
       <span class="card-icon">&#9989;</span>
       <div class="card-name">Habit</div>
-      <div class="card-domain">habit.rchx.com</div>
+      <div class="card-url">habit.rchx.com</div>
       <div class="card-desc">Daily habit tracker</div>
     </div>
-
-    <div class="card dim">
+    <div class="app-card coming">
       <span class="card-icon">&#9201;</span>
       <div class="card-name">Focus</div>
-      <div class="card-domain">focus.rchx.com</div>
+      <div class="card-url">focus.rchx.com</div>
       <div class="card-desc">Pomodoro focus timer</div>
     </div>
-
-    <div class="card dim">
+    <div class="app-card coming">
       <span class="card-icon">&#128257;</span>
       <div class="card-name">Split</div>
-      <div class="card-domain">split.rchx.com</div>
+      <div class="card-url">split.rchx.com</div>
       <div class="card-desc">Bill &amp; expense splitter</div>
     </div>
-
   </div>
-</section>
 
-<footer>
-  Copyright &copy; 2026
-  <a href="https://github.com/rahulchhabrani" target="_blank">Rahul Chhabrani</a>
-  <span class="footer-divider">&middot;</span>
-  <a href="https://github.com/rahulchhabrani" target="_blank">GitHub</a>
-  <span class="footer-divider">&middot;</span>
-  <a href="https://twitter.com/rahulchhabrani" target="_blank">@rahulchhabrani</a>
-</footer>
+  <footer>
+    Built by Rahul
+  </footer>
 
-<!-- oneko cat follows cursor -->
-<script>
-(function oneko() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var CAT_GIF = 'https://raw.githubusercontent.com/adryd325/oneko.js/main/oneko.gif';
-  var el = document.createElement('div');
-  el.id = 'oneko';
-  el.setAttribute('aria-hidden', 'true');
-  Object.assign(el.style, {
-    width:'32px',height:'32px',position:'fixed',
-    pointerEvents:'none',imageRendering:'pixelated',
-    left:'16px',top:'16px',zIndex:'2147483647',
-    backgroundImage:'url('+CAT_GIF+')',
-  });
-  document.body.appendChild(el);
-  var SP={
-    idle:[[-3,-3]],alert:[[-7,-3]],
-    scratchSelf:[[-5,0],[-6,0],[-7,0]],
-    scratchWallN:[[0,0],[0,-1]],scratchWallS:[[-7,-1],[-6,-2]],
-    scratchWallE:[[-2,-2],[-2,-3]],scratchWallW:[[-4,0],[-4,-1]],
-    tired:[[-3,-2]],sleeping:[[-2,0],[-2,-1]],
-    N:[[-1,-2],[-1,-3]],NE:[[0,-2],[0,-3]],
-    E:[[-3,0],[-3,-1]],SE:[[-5,-1],[-5,-2]],
-    S:[[-6,-3],[-7,-2]],SW:[[-5,-3],[-6,-1]],
-    W:[[-4,-2],[-4,-3]],NW:[[-1,0],[-1,-1]],
-  };
-  var nx=32,ny=32,mx=0,my=0,fc=0,it=0,ia=null,iaf=0,lft,SPD=10;
-  function ss(n,f){var s=SP[n][f%SP[n].length];el.style.backgroundPosition=s[0]*32+'px '+s[1]*32+'px';}
-  function ri(){ia=null;iaf=0;}
-  function idle(){
-    it++;
-    if(it>10&&Math.floor(Math.random()*200)===0&&!ia){
-      var o=['sleeping','scratchSelf'];
-      if(nx<32)o.push('scratchWallW');if(ny<32)o.push('scratchWallN');
-      if(nx>window.innerWidth-32)o.push('scratchWallE');if(ny>window.innerHeight-32)o.push('scratchWallS');
-      ia=o[Math.floor(Math.random()*o.length)];
-    }
-    switch(ia){
-      case'sleeping':if(iaf<8){ss('tired',0);break;}ss('sleeping',Math.floor(iaf/4));if(iaf>192)ri();break;
-      case'scratchWallN':case'scratchWallS':case'scratchWallE':case'scratchWallW':case'scratchSelf':ss(ia,iaf);if(iaf>9)ri();break;
-      default:ss('idle',0);return;
-    }
-    iaf++;
-  }
-  function frame(){
-    fc++;
-    var dx=nx-mx,dy=ny-my,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<SPD||d<48){idle();return;}
-    ia=null;iaf=0;
-    if(it>1){ss('alert',0);it=Math.min(it,7)-1;return;}
-    var dir='';
-    if(dy/d>.5)dir+='N';if(dy/d<-.5)dir+='S';
-    if(dx/d>.5)dir+='W';if(dx/d<-.5)dir+='E';
-    ss(dir,fc);
-    nx-=(dx/d)*SPD;ny-=(dy/d)*SPD;
-    nx=Math.min(Math.max(16,nx),window.innerWidth-16);
-    ny=Math.min(Math.max(16,ny),window.innerHeight-16);
-    el.style.left=(nx-16)+'px';el.style.top=(ny-16)+'px';
-  }
-  function tick(ts){
-    if(!el.isConnected)return;
-    if(!lft)lft=ts;
-    if(ts-lft>100){lft=ts;frame();}
-    requestAnimationFrame(tick);
-  }
-  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
-  requestAnimationFrame(tick);
-})();
-</script>
+</div>
 </body>
 </html>
